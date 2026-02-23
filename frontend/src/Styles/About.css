@@ -1,0 +1,157 @@
+#about {
+    width: 100%;
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: 
+        linear-gradient(to bottom, 
+            rgba(var(--bg-color-rgb), 0.9),
+            rgba(var(--bg-color-rgb), 0.8)
+        ),
+        url('../assets/images/HomeBG.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.about-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 20px;
+    margin: 0 auto;
+
+    position: relative;
+    z-index: 5;
+}
+
+
+.about-left {
+    flex: 0 0 340px !important; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.about-image {
+    width: 340px !important;
+    height: 340px!important;
+    max-width: 340px!important;
+    max-height: 340px!important;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 10px solid var(--accent-color);
+    box-shadow: 0 40px 65px rgba(0, 0, 0, 0.6);
+
+    display: block;
+    flex-shrink: 0;
+
+
+    animation: aboutFloat 4s ease-in-out infinite;
+
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .about-image {
+    border: 10px solid var(--text-color);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes aboutFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+
+.about-right {
+    flex: 1;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-right h2 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block; 
+    padding-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.about-right h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+.about-right p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+@media (max-width: 900px) {
+    .about-image {
+        width: 260px;
+        height: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+       
+        flex-direction: column; 
+        
+        
+        align-items: center; 
+        
+       
+        text-align: center;
+        gap: 40px;
+    }
+
+   
+    .about-right h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .about-image {
+        width: 230px;
+        height: 230px;
+    }
+
+    .about-right h2 {
+        font-size: 2rem;
+    }
+
+   
+}

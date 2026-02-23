@@ -1,0 +1,45 @@
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    border-top: 2px solid var(--accent-color);
+    box-shadow: 0 4px 10px rgba(0, 0 , 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-bg);
+    box-shadow: 0 5px 20px var(--accent-color);
+}
+.light-mode .project-card:hover {
+  background-color: rgb(255, 255, 255);
+}
+.project-title {
+    color: var(--accent-color); /* Sky Blue */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.project-link {
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,65 @@
+.App {
+    padding-top: 60px; /* Offset for the fixed Navbar */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.app-footer {    
+    width: 100%;
+    padding: 50px 0 20px 0; 
+    
+    /* Flexbox for Centering */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+
+.app-footer p {
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center; 
+    padding: 0 5%;
+}
+
+
+.social-links-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 0; 
+}
+
+/* ======== FULL PAGE BACKGROUND (APPLIED TO ALL SECTIONS) ======== */
+
+/* Default (Desktop) */
+.global-background {
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(var(--bg-color-rgb), 0.9),
+            rgba(var(--bg-color-rgb), 0.8)
+        ),
+        url('./assets/images/HomeBG.png');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .global-background {
+        background-attachment: scroll !important; 
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+

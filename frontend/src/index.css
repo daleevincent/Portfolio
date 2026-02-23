@@ -1,0 +1,146 @@
+/* Define color palette and default font */
+:root {
+    /* Colors */
+    --bg-color: #0a192f;    /* Deep Navy Blue */
+    --bg-color-rgb: 10, 25, 47; /* ADDED: RGB equivalent for opacity in Home.css */
+    --text-color: #ccd6f6;  /* Lightest Gray/White for primary text */
+    --text-dark: #8892b0;   /* Gray/Blue for secondary text (like body copy) */
+    --accent-color: #007bff; /* Blue for highlights */
+    --card-bg: rgb(20, 34, 55);
+
+    /* Typography */
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+    --nav-height: 100px;
+    
+    --navbar-bg: rgba(10, 25, 47, 0.95);
+}
+
+.light-mode {
+    --bg-color: #f5f7fa;
+    --bg-color-rgb: 245, 247, 250; /* ADDED: RGB equivalent for opacity in Home.css */
+    --text-color: #0a192f;
+    --text-dark: #445;
+    --accent-color: #007bff;
+    --card-bg: rgba(0, 0, 0, 0.05);
+
+    --navbar-bg: rgba(255, 255, 255, 0.85);
+}
+
+.light-mode .skill-card {
+    background-color: rgb(255, 255, 255);
+}
+.light-mode .project-card {
+  background-color: rgb(255, 255, 255);
+}
+.light-mode .education-entry {
+  background-color: rgb(255, 255, 255);
+}
+
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden; 
+
+    background-image: 
+        linear-gradient(to bottom,
+            rgba(var(--bg-color-rgb), 0.9),
+            rgba(var(--bg-color-rgb), 0.8)
+        ),
+        url('../assets/images/HomeBG.png');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Main Content Wrapper (Using the user's previous structure for responsiveness) */
+main {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1600px; 
+}
+
+
+section {
+    padding: 80px 5%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative; 
+}
+
+
+section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 90%; 
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.305);
+}
+h1, h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin-top: 8px;
+    left: initial;
+    transform: initial;
+}
+
+
+p {
+    color: var(--text-dark);
+    max-width: 800px;
+}
+
+.about-image {
+    width: 260px !important;
+    height: 260px !important;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    section {
+        padding: 60px 4%;
+        min-height: auto;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+

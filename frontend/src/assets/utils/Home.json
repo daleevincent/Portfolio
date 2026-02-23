@@ -1,0 +1,8 @@
+{
+  "greeting": "Hi, my name is",
+  "name": "Dale Vincent",
+  "title": "I build things for the web.",
+  "tagline": "I’m a passionate student developer focused on creating simple, accessible, and responsive user experiences.",
+  "cvLink": "./src/assets/files/",
+  "contactEmail": "dalevincent94gmail@gmail.com"
+}
