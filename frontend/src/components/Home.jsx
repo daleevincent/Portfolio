@@ -4,7 +4,6 @@ import "../Styles/Home.css";
 import ModalOverlay from "./ModalOverlay.jsx";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
-import resumePDF from "../assets/files/CV_Montaño.pdf";
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +29,9 @@ const Home = () => {
           <div className="home-actions">
             <button
               className="cta-button primary-button"
-              onClick={() => window.open(resumePDF, "_blank")}
+              onClick={() =>
+                window.open("/Portfolio/files/CV_Montaño.pdf", "_blank")
+              }
             >
               <span>Get Resume</span>
               <MdDownload size={16} />
