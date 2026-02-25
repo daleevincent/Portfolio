@@ -1,47 +1,157 @@
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    width: 100%;
+.projects-section {  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 10%;
 }
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+/* ============================= */
+/* CARD BASE */
+/* ============================= */
 
 .project-card {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    border-top: 2px solid var(--accent-color);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  border-top: 2px solid var(--accent-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform;
 }
 
+/* Lift effect (desktop) */
 .project-card:hover {
-    transform: translateY(-5px);
-    background-color: var(--card-bg);
-    box-shadow: 0 5px 20px var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--accent-color);
+}
+
+/* ============================= */
+/* CONTENT LAYER */
+/* ============================= */
+
+.description {
+  position: relative;
+  z-index: 3;
+  transition: color 0.4s ease;
+}
+
+/* ============================= */
+/* BLUE CIRCLES */
+/* ============================= */
+
+.circle-top,
+.circle-bottom {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  transition: transform 0.6s ease-out;
+  z-index: 1;
+}
+
+.circle-top {
+  top: -20px;
+  left: -20px;
+}
+
+.circle-bottom {
+  bottom: -20px;
+  right: -20px;
+}
+
+/* ============================= */
+/* DESKTOP HOVER */
+/* ============================= */
+
+@media (hover: hover) {
+  .project-card:hover .circle-top,
+  .project-card:hover .circle-bottom {
+    transform: scale(12);
+  }
+}
+
+/* ============================= */
+/* TEXT COLOR ON HOVER */
+/* ============================= */
+
+.project-card:hover .project-title,
+.project-card:hover p,
+.project-card:hover .project-link {
+  color: #222;
+}
+
+.light-mode .project-card:hover .project-title,
+.light-mode .project-card:hover p,
+.light-mode .project-card:hover .project-link {
+  color: #111;
 }
 
 .light-mode .project-card:hover {
-    background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
 }
 
+/* ============================= */
+/* TYPOGRAPHY */
+/* ============================= */
+
 .project-title {
-    color: var(--accent-color);
-    /* Sky Blue */
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
 
 .project-card p {
-    color: var(--text-color);
-    margin-bottom: 15px;
+  color: var(--text-color);
+  margin-bottom: 15px;
 }
 
 .project-link {
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.3s;
+  color: var(--accent-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
 .project-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* MOBILE / SMALL SCREENS */
+/* FULL BLUE POP */
+/* ============================= */
+
+@media (max-width: 768px) {
+  /* Treat tap like hover */
+  .project-card:active .circle-top,
+  .project-card:active .circle-bottom,
+  .project-card:hover .circle-top,
+  .project-card:hover .circle-bottom {
+    transform: scale(15); /* FULL POP */
+  }
+
+  /* Maintain readability */
+  .project-card:active .project-title,
+  .project-card:active p,
+  .project-card:active .project-link,
+  .project-card:hover .project-title,
+  .project-card:hover p,
+  .project-card:hover .project-link {
+    color: #0b0b0b;
+  }
+}
+
+/* Tap feedback */
+.project-card:active {
+  transform: scale(0.97);
 }

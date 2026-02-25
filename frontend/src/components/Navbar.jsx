@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react'; 
-import '../Styles/Navbar.css';
+import React, { useState, useEffect } from "react";
+import "../Styles/Navbar.css";
 
 const sections = ["home", "about", "skills", "projects", "education"];
 
 const Navbar = () => {
+  // ✅ Initialize state from localStorage (NO effect needed)
+  const [isLightMode, setIsLightMode] = useState(() => {
+    return localStorage.getItem("theme") === "light";
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [isLightMode, setIsLightMode] = useState(false);
 
-  // Load saved theme
+  // ✅ Effect ONLY syncs external system (DOM)
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      document.body.classList.add("light-mode");
-      setIsLightMode(true);
-    }
-  }, []);
+    document.body.classList.toggle("light-mode", isLightMode);
+    localStorage.setItem("theme", isLightMode ? "light" : "dark");
+  }, [isLightMode]);
 
   // Scroll spy
   useEffect(() => {
@@ -40,25 +41,19 @@ const Navbar = () => {
   }, []);
 
   const toggleTheme = () => {
-    document.body.classList.toggle("light-mode");
-    const isLight = document.body.classList.contains("light-mode");
-
-    setIsLightMode(isLight);
-    localStorage.setItem("theme", isLight ? "light" : "dark");
+    setIsLightMode((prev) => !prev);
   };
 
   return (
     <nav className="navbar">
-     
       <div className="navbar-logo">
         <a href="#home">
-          D<span style={{color: 'var(--accent-color)'}}>V</span>
+          D<span>V</span>
         </a>
       </div>
 
-      
       <div className="navbar-right">
-        <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
+        <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
           {sections.map((sec) => (
             <li key={sec}>
               <a
@@ -72,14 +67,12 @@ const Navbar = () => {
           ))}
         </ul>
 
-        
         <button className="theme-toggle" onClick={toggleTheme}>
           {isLightMode ? "☾" : "☼"}
         </button>
 
-        
-        <div 
-          className={`navbar-toggle ${isOpen ? 'open' : ''}`} 
+        <div
+          className={`navbar-toggle ${isOpen ? "open" : ""}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <span></span>
