@@ -9,7 +9,7 @@ const Education = () => {
 
       <div className="education-main-layout">
         {educationEntries.map((entry) => (
-          <div className="education-card" key={entry.id}>
+          <div class="education-card" tabindex="0">
             <img src={entry.image} alt={entry.school} className="education-card-image" />
 
             <div className="education-card-overlay">
