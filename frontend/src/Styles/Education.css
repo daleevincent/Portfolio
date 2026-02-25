@@ -16,11 +16,9 @@
 .education-main-layout {
   display: flex;
   gap: 30px;
-
-  justify-content: center;   /* centers horizontally */
+  justify-content: center;
   align-items: stretch;
-
-  flex-wrap: wrap;           /* allows wrapping if screen smaller */
+  flex-wrap: wrap;
 }
 
 /* ============================= */
@@ -29,7 +27,7 @@
 
 .education-card {
   position: relative;
-  flex: 0 0 320px; /* fixed width for desktop */
+  flex: 0 0 320px;
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
@@ -38,6 +36,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Desktop hover */
 .education-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
@@ -55,6 +54,7 @@
   transition: transform 0.5s ease;
 }
 
+/* Desktop hover zoom */
 .education-card:hover .education-card-image {
   transform: scale(1.08);
 }
@@ -90,9 +90,36 @@
   transition: all 0.4s ease;
 }
 
+/* Desktop hover overlay */
 .education-card:hover .education-card-overlay {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============================= */
+/* MOBILE TAP SUPPORT */
+/* ============================= */
+
+/* When tapped (mobile) */
+.education-card:active .education-card-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.education-card:active .education-card-image {
+  transform: scale(1.08);
+}
+
+/* Prevent fake hover behavior on touch devices */
+@media (hover: none) {
+  .education-card:hover .education-card-overlay {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+
+  .education-card:hover .education-card-image {
+    transform: scale(1);
+  }
 }
 
 /* ============================= */
@@ -180,11 +207,5 @@
 
   .education-card-overlay h3 {
     font-size: 1.1rem;
-  }
-
-  /* Mobile UX improvement: always show overlay */
-  .education-card-overlay {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
