@@ -1,5 +1,4 @@
 import React from 'react';
-import skillsData from '../assets/utils/Skills.json';
 import '../Styles/Skills.css'; 
 
 // ------------------ SETUP FOR SKILLS CAROUSEL ------------------

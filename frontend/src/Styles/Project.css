@@ -3,7 +3,6 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     width: 100%;
-    
 }
 
 .project-card {
@@ -11,7 +10,7 @@
     padding: 25px;
     border-radius: 8px;
     border-top: 2px solid var(--accent-color);
-    box-shadow: 0 4px 10px rgba(0, 0 , 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, background-color 0.3s;
 }
 
@@ -20,11 +19,14 @@
     background-color: var(--card-bg);
     box-shadow: 0 5px 20px var(--accent-color);
 }
+
 .light-mode .project-card:hover {
-  background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
 }
+
 .project-title {
-    color: var(--accent-color); /* Sky Blue */
+    color: var(--accent-color);
+    /* Sky Blue */
     font-size: 1.5rem;
     margin-bottom: 15px;
 }
