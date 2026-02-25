@@ -1,7 +1,7 @@
 import React from 'react';
 import socialData from '../assets/utils/SocialLinks.json';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa'; 
-import '../Styles/Home.css'; 
+import '../App.css'; 
 
 const iconMap = {
     Github: <FaGithub />,
