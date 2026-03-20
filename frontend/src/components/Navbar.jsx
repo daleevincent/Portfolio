@@ -4,7 +4,7 @@ import "../Styles/Navbar.css";
 const sections = ["home", "about", "skills", "projects", "education"];
 
 const Navbar = () => {
-  // ✅ Initialize state from localStorage (NO effect needed)
+  // Initialize state from localStorage (NO effect needed)
   const [isLightMode, setIsLightMode] = useState(() => {
     return localStorage.getItem("theme") === "light";
   });
@@ -12,7 +12,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // ✅ Effect ONLY syncs external system (DOM)
+  // Effect ONLY syncs external system (DOM)
   useEffect(() => {
     document.body.classList.toggle("light-mode", isLightMode);
     localStorage.setItem("theme", isLightMode ? "light" : "dark");

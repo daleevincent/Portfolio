@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import homeData from "../assets/utils/Home.json";
 import "../Styles/Home.css";
-import ModalOverlay from "./ModalOverlay.jsx";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 
 const Home = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const openModal = (e) => {
-    e.preventDefault();
-    setIsModalOpen(true);
-  };
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(homeData.contactEmail);
+      setCopied(true);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000); // reset after 2 seconds
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
   };
 
   return (
@@ -30,25 +33,23 @@ const Home = () => {
             <button
               className="cta-button primary-button"
               onClick={() =>
-                window.open("/Portfolio/files/CV_Montaño.pdf", "_blank")
+                window.open("/Portfolio/files/CV-DaleVincent.pdf", "_blank")
               }
             >
               <span>Get Resume</span>
               <MdDownload size={16} />
             </button>
 
-            <button onClick={openModal} className="cta-button secondary-button">
-              <span>Contact me</span>
+            <button
+              onClick={handleCopyEmail}
+              className="cta-button secondary-button"
+            >
+              <span>{copied ? "Email Copied!" : "Contact me"}</span>
               <RiContactsFill size={16} />
             </button>
           </div>
         </div>
       </div>
-      <ModalOverlay
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        contactEmail={homeData.contactEmail}
-      />
     </section>
   );
 };
