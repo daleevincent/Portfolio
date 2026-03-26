@@ -14,7 +14,19 @@
   {
     "id": 3,
     "name": "Coffea Liberica Farm Geo-Mapping System", 
-    "desc": "A web-based system for mapping and managing Coffea Liberica farms in batangas.",
-    "link": "https://github.com/daleevincent/geo-mapping"
+    "desc": "A mobile app for mapping and managing Coffea Liberica farms in batangas.",
+    "link": "https://github.com/daleevincent/LibericaMapping_Frontend"
+  },
+  {
+    "id": 4,
+    "name": "IP Geolocation Tracker",
+    "desc": "A full-stack web app built with React and Node.js that lets users search any IPv4 address and visualize its location on an interactive map. Features JWT authentication, persistent search history, and real-time geolocation lookup via a custom REST API.",
+    "link": "https://github.com/daleevincent/Ip_GeoWeb_Frontend"
+  },
+  {
+    "id": 5,
+    "name": "Personal Portfolio Website",
+    "desc": "A personal portfolio website built with React and Tailwind CSS to showcase my projects and skills.",
+    "link": "https://daleevincent.github.io/Portfolio/"
   }
 ]
