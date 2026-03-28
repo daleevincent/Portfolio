@@ -1,12 +1,16 @@
+/* ============================= */
+/* HOME SECTION                  */
+/* ============================= */
 .home-section {
     min-height: 100vh;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin-left: 70px;
+    padding: 40px 5%;
 }
 
 .home-section .greeting {
     color: var(--accent-color);
-    /* Sky Blue */
     font-size: 1.2rem;
     font-weight: 650;
     margin-bottom: 10px;
@@ -29,6 +33,28 @@
     display: none;
 }
 
+/* Typing effect */
+.home-section .typing {
+    display: inline-block;
+}
+
+.home-section .typing-text {
+    vertical-align: middle;
+}
+
+.home-section .typing-cursor {
+    display: inline-block;
+    margin-left: 8px;
+    color: var(--accent-color);
+    font-weight: 700;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    0% { visibility: visible; }
+    50% { visibility: hidden; }
+    100% { visibility: visible; }
+}
 
 .home-section .tagline {
     max-width: 600px;
@@ -38,7 +64,6 @@
     line-height: 1.5;
     margin-bottom: 40px;
     position: relative;
-    /* required for the line */
 }
 
 /* Blue underline */
@@ -47,18 +72,15 @@
     position: absolute;
     left: 0;
     bottom: -30px;
-    /* space between text and line */
     width: 347px;
-    /* length of the blue line */
     height: 3px;
-    /* thickness */
     background-color: var(--accent-color);
-    /* same blue you use elsewhere */
     border-radius: 4px;
 }
 
-
-
+/* ============================= */
+/* CTA BUTTONS                   */
+/* ============================= */
 .home-section .cta-button {
     display: inline-flex;
     align-items: center;
@@ -95,17 +117,14 @@
     transition: top 0.7s cubic-bezier(.25, 1, .3, 1);
 }
 
-/* Main blob */
 .home-section .cta-button::before {
     animation: liquidBlob 4.5s infinite ease-in-out;
 }
 
-/* Secondary blob */
 .home-section .cta-button::after {
     animation: liquidBlob 6s infinite ease-in-out reverse;
 }
 
-/* Hover Trigger */
 .home-section .cta-button:hover {
     color: var(--text-dark);
 }
@@ -115,78 +134,240 @@
     top: -40%;
 }
 
-/* Liquid Animation Keyframes */
+/* ============================= */
+/* ANIMATIONS                    */
+/* ============================= */
 @keyframes liquidBlob {
-    0% {
-        border-radius: 42% 58% 70% 30% / 53% 30% 70% 47%;
-    }
-
-    25% {
-        border-radius: 58% 42% 30% 70% / 30% 65% 35% 70%;
-    }
-
-    50% {
-        border-radius: 30% 70% 45% 55% / 60% 25% 75% 40%;
-    }
-
-    75% {
-        border-radius: 65% 35% 55% 45% / 40% 75% 25% 60%;
-    }
-
-    100% {
-        border-radius: 42% 58% 70% 30% / 53% 30% 70% 47%;
-    }
+    0%   { border-radius: 42% 58% 70% 30% / 53% 30% 70% 47%; }
+    25%  { border-radius: 58% 42% 30% 70% / 30% 65% 35% 70%; }
+    50%  { border-radius: 30% 70% 45% 55% / 60% 25% 75% 40%; }
+    75%  { border-radius: 65% 35% 55% 45% / 40% 75% 25% 60%; }
+    100% { border-radius: 42% 58% 70% 30% / 53% 30% 70% 47%; }
 }
 
+@keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
 
+/* ============================= */
+/* HOME CONTAINER                */
+/* ============================= */
 .home-container {
     display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* ============================= */
+/* HOME CARDS                    */
+/* ============================= */
+/* ── Image card border — more subtle ── */
+.home-card {
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid rgba(100, 200, 255, 0.06);   /* was 0.1 — more subtle */
+    background: rgba(10, 25, 47, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(100, 200, 255, 0.03) inset;  /* was 0.05 */
+    transition: transform 0.35s cubic-bezier(.25, 1, .3, 1),
+                box-shadow 0.35s cubic-bezier(.25, 1, .3, 1),
+                border-color 0.35s ease;
+}
+
+.home-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(100, 200, 255, 0.18);        /* was 0.25 */
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(100, 200, 255, 0.06),         /* was 0.08 */
+        0 0 0 1px rgba(100, 200, 255, 0.08) inset;  /* was 0.12 */
+}
+
+/* ── Text card ── */
+.text-card {
+    flex: 1.4;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-card {
+    flex: 0.8;                    
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 250px;
+    justify-content: center;
+    padding: 32px;               
 }
 
-
-/* FLOATING ANIMATION */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+/* ── Image frame ── */
+.image-frame {
+    position: relative;
+    width: 100%;
+    max-width: 340px;            
+    aspect-ratio: 3 / 4;
 }
 
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 12px;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+    transition: filter 0.4s ease;
+}
 
+.image-card:hover .profile-image {
+    filter: grayscale(0%) contrast(1.1);
+}
+
+/* Decorative corner brackets */
+.corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--accent-color);
+    border-style: solid;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.image-card:hover .corner {
+    opacity: 1;
+    width: 26px;
+    height: 26px;
+}
+
+.corner--tl {
+    top: -4px;
+    left: -4px;
+    border-width: 2px 0 0 2px;
+    border-radius: 4px 0 0 0;
+}
+
+.corner--br {
+    bottom: -4px;
+    right: -4px;
+    border-width: 0 2px 2px 0;
+    border-radius: 0 0 4px 0;
+}
 
 /* ============================= */
-/* HOME SECTION – MOBILE FIX */
+/* CONTACT FORM                  */
 /* ============================= */
-@media (max-width: 768px) {
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
 
+.contact-form label {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--text-dark);
+    border-radius: 4px;
+    background-color: #112240;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 15px 0;
+}
+
+.email-link-hint {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.email-link-hint a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* ============================= */
+/* TABLET (769px – 1024px)       */
+/* ============================= */
+@media (max-width: 1024px) {
     .home-section {
         margin-left: 0;
-        /* remove sidebar spacing */
-        padding: 80px 6% 60px 6%;
-        /* add proper inner spacing */
+        padding: 100px 4% 60px;
+    }
+
+    .home-container {
+        gap: 24px;
+    }
+
+    .image-frame {
+        max-width: 200px;
+    }
+}
+
+/* ============================= */
+/* MOBILE (≤ 768px)              */
+/* ============================= */
+@media (max-width: 768px) {
+    .home-section {
+        margin-left: 0;
+        padding: 90px 6% 60px;
         text-align: center;
     }
 
     .home-container {
         flex-direction: column;
-        /* stack vertically */
-        gap: 40px;
-        /* remove huge 250px gap */
         align-items: center;
-        justify-content: center;
+        gap: 20px;
     }
 
-    /* Typography scaling */
+    .home-card {
+        padding: 28px 22px;
+        width: 100%;
+    }
+
+    /* Image on top for mobile */
+    .image-card {
+        order: -1;
+        padding: 24px;
+    }
+
+    .image-frame {
+        max-width: 160px;
+        margin: 0 auto;
+    }
+
+    .text-card {
+        align-items: center;
+    }
+
+    /* Typography */
     .home-section h1 {
         font-size: 2.8rem;
         line-height: 1.2;
@@ -202,79 +383,121 @@
         margin-bottom: 30px;
     }
 
-    /* Fix underline width */
+    /* Center underline */
     .home-section .tagline::after {
         width: 60%;
         left: 50%;
         transform: translateX(-50%);
+        margin-bottom: 16px;
     }
 
     /* Center buttons */
+    .home-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
     .home-section .cta-button {
-        margin: 10px auto 0 auto;
+        margin: 0;
     }
 }
 
-    @media (max-width: 480px) {
-        .social-links-container {
-            gap: 20px;
-        }
-
-        .social-icon-link {
-            font-size: 1.5rem;
-        }
+/* ============================= */
+/* SMALL MOBILE (≤ 480px)        */
+/* ============================= */
+@media (max-width: 480px) {
+    .home-section h1 {
+        font-size: 2.2rem;
     }
 
-
-    /* ---------------------------------- */
-    /* Form Elements */
-    /* ---------------------------------- */
-
-    .contact-form .form-group {
-        margin-bottom: 20px;
+    .home-section h2 {
+        font-size: 1.5rem;
     }
 
-    .contact-form label {
-        display: block;
-        color: var(--text-color);
-        margin-bottom: 5px;
-        font-weight: 500;
+    .image-frame {
+        max-width: 140px;
     }
 
-    .contact-form input[type="text"],
-    .contact-form input[type="email"],
-    .contact-form textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid var(--text-dark);
-        border-radius: 4px;
-        background-color: #112240;
-        color: var(--text-color);
-        font-size: 1rem;
-        transition: border-color 0.2s;
-        resize: vertical;
+    .social-links-container {
+        gap: 20px;
     }
 
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-        outline: none;
-        border-color: var(--accent-color);
+    .social-icon-link {
+        font-size: 1.5rem;
     }
+}
 
-    .submit-button {
-        width: 100%;
-        margin-top: 5px;
-        padding: 15px 0;
-    }
+/* ============================= */
+/* LIGHT MODE — HOME CARDS       */
+/* ============================= */
+.light-mode .home-card {
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(0, 123, 255, 0.1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 123, 255, 0.04) inset;
+}
 
-    .email-link-hint {
-        margin-top: 20px;
-        font-size: 0.8rem;
-        text-align: center;
-        color: var(--text-dark);
-    }
+.light-mode .home-card:hover {
+    border-color: rgba(0, 123, 255, 0.22);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.12),
+        0 0 40px rgba(0, 123, 255, 0.07),
+        0 0 0 1px rgba(0, 123, 255, 0.1) inset;
+}
 
-    .email-link-hint a {
-        color: var(--accent-color);
-        text-decoration: none;
+.light-mode .home-section h1 {
+    color: var(--text-color);   /* #0a192f — deep navy */
+}
+
+.light-mode .home-section h2 {
+    color: var(--text-dark);    /* #445 — muted dark */
+}
+
+.light-mode .home-section .tagline {
+    color: var(--text-dark);
+}
+
+.light-mode .home-section .cta-button {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.light-mode .home-section .cta-button:hover {
+    color: #ffffff;             /* white text on blue fill */
+}
+
+.light-mode .home-section .cta-button::before,
+.light-mode .home-section .cta-button::after {
+    background: var(--accent-color);
+    opacity: 0.15;
+}
+
+/* Image stays crisp in light mode */
+.light-mode .profile-image {
+    filter: grayscale(0%) contrast(1.02) brightness(1.02);
+}
+
+.light-mode .image-card:hover .profile-image {
+    filter: grayscale(0%) contrast(1.05) brightness(1.03);
+}
+
+/* Corner accents already use var(--accent-color) so they auto-adapt */
+
+/* Tagline underline — already uses var(--accent-color), no change needed */
+
+/* Section divider line — make it subtler in light mode */
+.light-mode section::after {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ============================= */
+/* MOBILE — Hide image card      */
+/* ============================= */
+@media (max-width: 768px) {
+    .image-card {
+        display: none;
     }
+}

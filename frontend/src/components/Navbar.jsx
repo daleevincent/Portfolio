@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Navbar.css";
+import logo from "../assets/images/logo.png";
 
 const sections = ["home", "about", "skills", "projects", "education"];
 
@@ -48,7 +49,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <a href="#home">
-          D<span>V</span>
+        <img src={logo} alt="DV Logo" className="navbar-logo-img" />
         </a>
       </div>
 
