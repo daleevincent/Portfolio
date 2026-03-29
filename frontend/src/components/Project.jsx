@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { FaGithub } from "react-icons/fa";
 import projects from "../assets/utils/Projects.json";
 import "../Styles/Project.css";
 
@@ -40,7 +41,8 @@ const Project = () => {
                 rel="noopener noreferrer"
                 className="project-link"
               >
-                View on GitHub→
+                <FaGithub className="project-link-icon" aria-hidden="true" />
+                <span>View on GitHub</span>
               </a>
             </div>
           </div>

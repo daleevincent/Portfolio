@@ -26,6 +26,8 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   -webkit-tap-highlight-color: transparent;
   will-change: transform;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Lift effect (desktop) */
@@ -42,6 +44,9 @@
   position: relative;
   z-index: 3;
   transition: color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 
 /* ============================= */
@@ -116,14 +121,45 @@
 }
 
 .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg-color);
   color: var(--accent-color);
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: color 0.3s;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
+  margin-top: auto;
+  align-self: flex-start;
+  white-space: nowrap;
+  width: auto;
+}
+
+.project-link-icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
 }
 
 .project-link:hover {
-  text-decoration: underline;
+  color: var(--accent-color);
+  background: var(--bg-color);
+  transform: translateY(-2px);
+}
+
+/* When hovering the whole card, ensure the link's icon and text use the accent color */
+.project-card:hover .project-link span,
+.project-card:hover .project-link .project-link-icon,
+.project-card:hover .project-link-icon {
+  color: var(--accent-color);
+}
+
+.project-link:hover span,
+.project-link:hover .project-link-icon {
+  color: var(--accent-color);
 }
 
 /* ============================= */
